@@ -12,6 +12,7 @@
     --muted: #f4f4f5;
     --muted-foreground: #71717a;
     --faint: #fafafa;
+    --faint-foreground: #a1a1aa;
     --accent: #f4f4f5;
     --danger: #d32f2f;
     --danger-foreground: #fafafa;
@@ -88,6 +89,7 @@
     --muted: #27272a;
     --muted-foreground: #a1a1aa;
     --faint: #1e1e21;
+    --faint-foreground: #71717a;
     --accent: #27272a;
     --danger: #f4807b;
     --danger-foreground: #18181b;

@@ -19,7 +19,7 @@
   .text-center { text-align: center; }
   .text-right { text-align: end; }
   .text-light { color: var(--muted-foreground); }
-  .text-lighter { color: var(--muted-foreground); }
+  .text-lighter { color: var(--faint-foreground); }
 
   .flex { display: flex; }
   .flex-col { flex-direction: column; }
