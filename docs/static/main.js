@@ -69,6 +69,39 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       menu.prepend(b);
     }
+
+    // 'Edit' button to toggle fullscreen side-by-side editubg.
+    {
+      const b = document.createElement('button');
+      b.className = 'ghost small btn-edit';
+      b.textContent = 'Edit';
+      b.setAttribute('aria-label', 'Toggle fullscreen editor');
+      b.addEventListener('click', () => {
+        const isFull = demo.classList.toggle('fullscreen');
+
+        b.textContent = isFull ? 'Close' : 'Edit';
+        if (isFull) {
+          demo.querySelectorAll('[role="tabpanel"]').forEach(p => p.removeAttribute('hidden'));
+        } else {
+          const active = demo.querySelector('[role="tab"][aria-selected="true"]');
+          if (active) active.click();
+        }
+      });
+      menu.prepend(b);
+    }
+  });
+
+  // On Esc, close fullscreen editor if open.
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      const isFull = document.querySelector('.ot-demo.fullscreen');
+      if (isFull) {
+        isFull.classList.remove('fullscreen');
+        isFull.querySelector('.btn-edit').textContent = 'Edit';
+        const active = isFull.querySelector('[role="tab"][aria-selected="true"]');
+        if (active) active.click();
+      }
+    }
   });
 });
 
