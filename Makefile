@@ -37,8 +37,8 @@ css:
 
 js:
 	@mkdir -p dist
-	@cat src/js/base.js src/js/tabs.js src/js/dropdown.js src/js/toast.js src/js/tooltip.js src/js/sidebar.js > dist/oat.js
-	@esbuild dist/oat.js --minify --outfile=dist/oat.min.js
+	@esbuild src/js/index.js --bundle --format=iife --outfile=dist/oat.js
+	@esbuild src/js/index.js --bundle --format=iife --minify --outfile=dist/oat.min.js
 	@gzip -9 -k -f dist/oat.min.js
 	@cp dist/oat.min.js docs/static/oat.min.js
 	@echo "JS: $$(wc -c < dist/oat.min.js | tr -d ' ') bytes (minified)"

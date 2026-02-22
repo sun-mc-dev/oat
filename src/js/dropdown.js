@@ -12,6 +12,8 @@
  * </ot-dropdown>
  */
 
+import { OtBase } from './base.js';
+
 class OtDropdown extends OtBase {
   #menu;
   #trigger;

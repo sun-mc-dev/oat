@@ -72,18 +72,23 @@
 
     &[data-variant="success"] {
       border-inline-start-color: var(--success);
+      .toast-title {
+        color: var(--success);
+      }
     }
 
     &[data-variant="danger"] {
       border-inline-start-color: var(--danger);
+      .toast-title {
+        color: var(--danger);
+      }
     }
 
     &[data-variant="warning"] {
       border-inline-start-color: var(--warning);
-    }
-
-    &[data-variant="info"] {
-      border-inline-start-color: var(--secondary);
+      .toast-title {
+        color: var(--warning);
+      }
     }
 
     & > [data-close] {

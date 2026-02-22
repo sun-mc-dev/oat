@@ -13,6 +13,8 @@
  * </ot-tabs>
  */
 
+import { OtBase } from './base.js';
+
 class OtTabs extends OtBase {
   #tabs = [];
   #panels = [];

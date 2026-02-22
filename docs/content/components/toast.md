@@ -36,7 +36,7 @@ ot.toast('Bottom right', '',{ placement: 'bottom-right' })
 
 ### Custom markup
 
-Use `ot.toastEl(element, options?)` to show toasts with custom HTML content.
+Use `ot.toast.el(element, options?)` to show toasts with custom HTML content.
 
 {% demo() %}
 ```html
@@ -48,7 +48,7 @@ Use `ot.toastEl(element, options?)` to show toasts with custom HTML content.
   </output>
 </template>
 
-<button onclick="ot.toastEl(document.querySelector('#undo-toast'), { duration: 8000 })">
+<button onclick="ot.toast.el(document.querySelector('#undo-toast'), { duration: 8000 })">
   Toast with action
 </button>
 ```
@@ -57,8 +57,8 @@ Use `ot.toastEl(element, options?)` to show toasts with custom HTML content.
 **From a template:**
 
 ```js
-ot.toastEl(document.querySelector('#my-template'))
-ot.toastEl(document.querySelector('#my-template'), { duration: 8000, placement: 'bottom-center' })
+ot.toast.el(document.querySelector('#my-template'))
+ot.toast.el(document.querySelector('#my-template'), { duration: 8000, placement: 'bottom-center' })
 ```
 
 **Dynamic element:**
@@ -68,7 +68,7 @@ const el = document.createElement('output');
 el.className = 'toast';
 el.setAttribute('data-variant', 'warning');
 el.innerHTML = '<h6 class="toast-title">Warning</h6><p>Custom content here</p>';
-ot.toastEl(el);
+ot.toast.el(el);
 ```
 
 The element is cloned before display, so templates can be reused.

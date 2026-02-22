@@ -1,7 +1,7 @@
 // oat - Base Web Component Class
 // Provides lifecycle management, event handling, and utilities.
 
-class OtBase extends HTMLElement {
+export class OtBase extends HTMLElement {
   #initialized = false;
 
   // Called when element is added to DOM.
@@ -85,11 +85,6 @@ class OtBase extends HTMLElement {
   uid() {
     return Math.random().toString(36).slice(2, 10);
   }
-}
-
-// Export for use in other files
-if (typeof window !== 'undefined') {
-  window.OtBase = OtBase;
 }
 
 // Polyfill for command/commandfor (Safari)
