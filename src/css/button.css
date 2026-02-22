@@ -1,10 +1,11 @@
 @layer base {
   :is(button, [type=submit], [type=reset], [type=button], a.button), ::file-selector-button {
+    --_hov: color-mix(in srgb, var(--primary), white 25%);
+
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-2);
-    /* height: 2.5rem; */
     padding: var(--space-2) var(--space-4);
     font-size: var(--text-7);
     font-weight: var(--font-medium);
@@ -23,7 +24,7 @@
     }
 
     &:hover:not(:disabled) {
-      background-color: color-mix(in srgb, var(--primary), white 25%);
+      background-color: var(--_hov);
     }
 
     &:active:not(:disabled) {
@@ -31,72 +32,49 @@
     }
 
     &[data-variant="secondary"] {
+      --_hov: color-mix(in srgb, var(--secondary), black 10%);
       background-color: var(--secondary);
       color: var(--secondary-foreground);
       border-color: rgb(from #fff r g b / 0.5) rgb(from #000 r g b / 0.1) rgb(from #000 r g b / 0.1) rgb(from #fff r g b / 0.5);
-
-      &:hover:not(:disabled) {
-        background-color: color-mix(in srgb, var(--secondary), black 10%);
-      }
     }
 
     &[data-variant="danger"] {
+      --_hov: color-mix(in srgb, var(--danger), black 15%);
       background-color: var(--danger);
       color: var(--danger-foreground);
+    }
 
-      &:hover:not(:disabled) {
-        background-color: color-mix(in srgb, var(--danger), black 15%);
+    &:is(.outline, .ghost) {
+      --_hov: var(--accent);
+      background-color: transparent;
+      color: var(--foreground);
+
+      &[data-variant="danger"] {
+        --_hov: color-mix(in srgb, var(--danger), transparent 90%);
+        color: var(--danger);
+      }
+
+      &[data-variant="secondary"] {
+        --_hov: color-mix(in srgb, var(--secondary), transparent 80%);
+        color: var(--secondary-foreground);
       }
     }
 
     &.outline {
-      background-color: transparent;
       border-color: var(--border);
 
-      &:not([data-variant]) {
-        color: var(--foreground);
-      }
       &[data-variant="danger"] {
-        color: var(--danger);
         border-color: var(--danger);
-        &:hover:not(:disabled) {
-          background-color: color-mix(in srgb, var(--danger), transparent 90%);
-        }
       }
+
       &[data-variant="secondary"] {
-        color: var(--secondary-foreground);
         border-color: var(--secondary);
-        &:hover:not(:disabled) {
-          background-color: color-mix(in srgb, var(--secondary), transparent 80%);
-        }
-      }
-      &:hover:not(:disabled):not([data-variant]) {
-        background-color: var(--accent);
       }
     }
 
     &.ghost {
-      background-color: transparent;
+      /* Same as .outline but no border. */
       border-color: transparent;
-
-      &:not([data-variant]) {
-        color: var(--foreground);
-      }
-      &[data-variant="danger"] {
-        color: var(--danger);
-        &:hover:not(:disabled) {
-          background-color: color-mix(in srgb, var(--danger), transparent 90%);
-        }
-      }
-      &[data-variant="secondary"] {
-        color: var(--secondary-foreground);
-        &:hover:not(:disabled) {
-          background-color: color-mix(in srgb, var(--secondary), transparent 80%);
-        }
-      }
-      &:hover:not(:disabled):not([data-variant]) {
-        background-color: var(--accent);
-      }
     }
 
     &.small {
