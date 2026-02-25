@@ -1,11 +1,6 @@
 @layer components {
-  :root {
-    --_nh: var(--space-12);
-  }
-
   [data-sidebar-layout] {
     --topnav-offset: 0px;
-    --topnav-scroll-offset: 0px;
 
     display: grid;
     grid-template-columns: 14rem 1fr;
@@ -13,18 +8,17 @@
     gap: var(--space-4);
 
     &:has(nav[data-topnav]) {
-      --topnav-offset: var(--_nh);
-      --topnav-scroll-offset: calc(var(--_nh) + var(--space-6));
+      --topnav-offset: var(--space-12);
+
+      > main [id] {
+        scroll-margin-block-start: calc(var(--space-12) + var(--space-6));
+      }
     }
 
     > main {
       min-width: 0;
       margin-block-start: var(--topnav-offset);
       padding-block-start: var(--space-8);
-
-      [id] {
-        scroll-margin-block-start: var(--topnav-scroll-offset);
-      }
     }
 
     > aside[data-sidebar] {
@@ -53,6 +47,7 @@
         min-height: 0;
         overflow-y: auto;
         padding: var(--space-3) var(--space-2);
+        font-size: var(--text-7);
 
         ul {
           list-style: none;
@@ -71,7 +66,6 @@
           display: flex;
           gap: var(--space-2);
           padding: var(--space-1) var(--space-3);
-          font-size: var(--text-7);
           color: var(--foreground);
           text-decoration: none;
           border-radius: var(--radius-small);
@@ -94,7 +88,6 @@
         summary {
           justify-content: flex-start;
           padding: var(--space-2) var(--space-3);
-          font-size: var(--text-7);
           border-radius: var(--radius-small);
 
           &::after {
@@ -111,7 +104,7 @@
     position: fixed;
     inset: 0 0 auto;
     z-index: 5;
-    min-height: var(--_nh);
+    min-height: var(--space-12);
     display: flex;
     align-items: center;
     gap: var(--space-3);
@@ -134,35 +127,34 @@
     background: none;
     border: 1px solid var(--border);
     border-radius: var(--radius-small);
-    cursor: pointer;
   }
 
   @media (min-width: 769px) {
-    [data-sidebar-layout="always"] [data-sidebar-toggle] {
-      display: inline-block;
-    }
-
     [data-sidebar-layout="always"] {
       transition: grid-template-columns var(--transition);
+
+      [data-sidebar-toggle] {
+        display: inline-block;
+      }
 
       > aside[data-sidebar] {
         transform: translateX(0);
         opacity: 1;
         transition: transform var(--transition), opacity var(--transition), visibility var(--transition);
       }
-    }
 
-    [data-sidebar-layout="always"][data-sidebar-open] {
-      grid-template-columns: 0px 1fr;
-      gap: 0;
+      &[data-sidebar-open] {
+        grid-template-columns: 0px 1fr;
+        gap: 0;
 
-      > aside[data-sidebar] {
-        overflow: hidden;
-        min-width: 0;
-        transform: translateX(-100%);
-        opacity: 0;
-        visibility: hidden;
-        border-inline-end: none;
+        > aside[data-sidebar] {
+          overflow: hidden;
+          min-width: 0;
+          transform: translateX(-100%);
+          opacity: 0;
+          visibility: hidden;
+          border-inline-end: none;
+        }
       }
     }
   }

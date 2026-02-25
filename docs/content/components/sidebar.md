@@ -13,15 +13,15 @@ Use `data-sidebar-layout` on a container (typically `<body>`) with `<aside data-
   <aside data-sidebar>
     <nav>
       <ul>
-        <li><a href="#" aria-current="page">Home</a></li>
-        <li><a href="#">Users</a></li>
+        <li><a href="#sidebar" aria-current="page">Home</a></li>
+        <li><a href="#sidebar">Users</a></li>
         <li>
           <details open>
             <summary>Settings</summary>
             <ul>
-              <li><a href="#">General</a></li>
-              <li><a href="#">Security</a></li>
-              <li><a href="#">Billing</a></li>
+              <li><a href="#sidebar">General</a></li>
+              <li><a href="#sidebar">Security</a></li>
+              <li><a href="#sidebar">Billing</a></li>
             </ul>
           </details>
         </li>
