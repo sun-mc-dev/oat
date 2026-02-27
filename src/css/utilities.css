@@ -20,6 +20,10 @@
     flex-wrap: wrap;
     align-content: flex-start;
     height: auto;
+
+    * {
+      margin: 0;
+    }
   }
   .vstack {
     display: flex;
@@ -42,11 +46,9 @@
 
   .w-100 { width: 100%; }
 
-  ul, ol {
-    &.unstyled {
-      list-style: none;
-      padding-inline-start: 0;
-      margin-inline-start: 0;
-    }
+  :is(ul, ol, a).unstyled {
+    list-style: none;
+    text-decoration: none;
+    padding: 0;
   }
 }
